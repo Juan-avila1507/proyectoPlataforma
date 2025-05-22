@@ -1,0 +1,308 @@
+/* Importar fuentes de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@300;500&display=swap');
+
+/* Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth; /* Desplazamiento suave entre secciones */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(120deg, #0f2027, #203a43, #2c5364); /* Fondo degradado oscuro */
+    color: #e0e0e0; /* Color de texto principal más claro para mejor legibilidad */
+    line-height: 1.9; /* Mayor espacio entre líneas para legibilidad */
+    background-size: cover;
+    background-attachment: fixed; /* Fondo fijo para efecto parallax */
+    overflow-x: hidden; /* Evita scroll horizontal */
+}
+
+/* Estilo del Header Fijo */
+header {
+    position: fixed;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.88); /* Fondo casi opaco para el header, mayor contraste */
+    padding: 20px 0;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.7); /* Sombra más profunda para darle más presencia */
+    backdrop-filter: blur(10px); /* Aumento del desenfoque para un efecto más notorio */
+    -webkit-backdrop-filter: blur(10px); /* Compatibilidad Safari */
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Espacio entre los enlaces */
+    flex-wrap: wrap; /* Permite que los elementos de navegación salten de línea en pantallas pequeñas */
+}
+
+nav a {
+    color: #0ff; /* Color cian para los enlaces (llamativo) */
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif; /* Fuente futurista para navegación */
+    font-size: 1.15rem;
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease; /* Transiciones suaves adicionales */
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-shadow: 0 0 2px rgba(0, 255, 255, 0.6); /* Resplandor sutil para que no opaque */
+}
+
+nav a:hover {
+    color: #fff; /* Blanco al pasar el ratón */
+    text-shadow: 0 0 12px #0ff, 0 0 25px #0ff; /* Efecto de resplandor más fuerte al pasar el ratón */
+    transform: translateY(-2px); /* Pequeña elevación al pasar el ratón */
+}
+
+/* Estilo de las Secciones */
+section {
+    padding: 120px 20px 80px; /* Espaciado superior para el header fijo */
+    max-width: 1000px;
+    margin: auto;
+    min-height: 100vh; /* Cada sección ocupa al menos la altura de la vista */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente */
+    position: relative; /* Para elementos decorativos internos */
+    background: transparent; /* Asegura que no haya un color de fondo por defecto */
+}
+
+#inicio {
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    background: url('https://images.unsplash.com/photo-1518770660435-406a30922bc8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover; /* Imagen de fondo para la intro */
+    background-attachment: fixed;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0,0,0,0.8);
+    position: relative; /* Para el overlay */
+}
+
+#inicio::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); /* Oscurece la imagen de fondo un poco más */
+    z-index: 1;
+}
+
+#inicio > * {
+    position: relative;
+    z-index: 2; /* Asegura que el contenido esté sobre el overlay */
+}
+
+h1, h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #0ff; /* Cian llamativo */
+    margin-bottom: 25px;
+    text-shadow: 0 0 4px rgba(0, 255, 255, 0.8); /* Resplandor más controlado */
+    letter-spacing: 2px;
+}
+
+.intro h1 {
+    font-size: 3.8rem; /* Tamaño grande para el título principal */
+    margin-bottom: 30px;
+    animation: pulseGlow 3s infinite alternate ease-in-out;
+}
+
+@keyframes pulseGlow {
+    from { text-shadow: 0 0 5px rgba(0, 255, 255, 0.7), 0 0 10px rgba(0, 255, 255, 0.5); }
+    to { text-shadow: 0 0 8px #0ff, 0 0 15px #0ff, 0 0 25px rgba(0, 255, 255, 0.5); }
+}
+
+.intro p {
+    font-size: 1.3rem;
+    color: #eee;
+    max-width: 700px;
+    margin: 0 auto;
+    text-shadow: 0 0 5px rgba(0,0,0,0.7);
+}
+
+.decorative-line {
+    height: 4px;
+    background: linear-gradient(to right, transparent, #0ff, transparent); /* Línea degradada */
+    width: 200px;
+    margin: 30px auto;
+    box-shadow: 0 0 10px #0ff;
+    border-radius: 2px;
+}
+
+/* Contenido de las Secciones */
+.section-content {
+    background: rgba(0, 0, 0, 0.8); /* Fondo más opaco para el contenido, mejor contraste */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.1); /* Sombra con resplandor cian muy sutil */
+    border: 1px solid rgba(0, 255, 255, 0.15); /* Borde sutil y menos brillante */
+    
+    /* Estado inicial para la animación de aparición */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out, box-shadow 0.3s ease-out, border-color 0.3s ease-out;
+}
+
+/* Clase añadida por JavaScript cuando la sección es visible */
+.section-content.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animación al pasar el ratón por encima de las secciones */
+.section-content:hover {
+    transform: translateY(-8px); /* Eleva un poco más la tarjeta */
+    box-shadow: 0 8px 45px rgba(0, 255, 255, 0.3), 0 0 20px rgba(0, 255, 255, 0.2) inset; /* Sombra más pronunciada y sutil brillo interior */
+    border-color: rgba(0, 255, 255, 0.5); /* Borde más visible al hover */
+    cursor: pointer; /* Indica que es interactivo aunque no tenga un link */
+}
+
+
+.section-content h2 {
+    border-bottom: 2px solid #0ff;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #0ff; /* Asegura que el color del título sea el cian */
+    text-shadow: 0 0 2px rgba(0, 255, 255, 0.5); /* Resplandor sutil para títulos de sección */
+}
+
+.section-content p {
+    color: #d0d0d0; /* Un gris más claro para mayor legibilidad */
+    line-height: 2.0; /* Mayor interlineado para facilitar la lectura */
+    font-size: 1.15rem; /* Tamaño de fuente ligeramente más grande */
+    text-align: justify;
+}
+
+.section-content p strong {
+    color: #0ff; /* Resalta las palabras clave en cian */
+    text-shadow: 0 0 1px #0ff; /* Pequeño resplandor para las negritas */
+}
+
+/* Estilo del Footer */
+footer {
+    text-align: center;
+    padding: 40px;
+    background: rgba(0,0,0,0.85); /* Fondo más opaco para el footer */
+    font-size: 0.95rem;
+    color: #bbb;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Decoración Tecnológica de Fondo (SVG animado) */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" fill="none" stroke="%230ff" stroke-width="0.2"><defs><linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="%230ff" stop-opacity="0"/><stop offset="50%" stop-color="%230ff" stop-opacity="0.2"/><stop offset="100%" stop-color="%230ff" stop-opacity="0"/></linearGradient></defs><rect x="0" y="0" width="100" height="100" fill="rgba(0,0,0,0)"/><g stroke-dasharray="0.5 2" opacity="0.1"><line x1="0" y1="0" x2="100" y2="100"/><line x1="100" y1="0" x2="0" y2="100"/><circle cx="50" cy="50" r="40"/><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="20"/></g><g stroke="url(%23glow)" stroke-width="0.5"><path d="M0 5 L100 5 M0 10 L100 10 M0 15 L100 15 M0 20 L100 20 M0 25 L100 25 M0 30 L100 30 M0 35 L100 35 M0 40 L100 40 M0 45 L100 45 M0 50 L100 50 M0 55 L100 55 M0 60 L100 60 M0 65 L100 65 M0 70 L100 70 M0 75 L100 75 M0 80 L100 80 M0 85 L100 85 M0 90 L100 90 M0 95 L100 95" /></g></svg>');
+    opacity: 0.03; /* Menos opacidad aún para que sea un patrón de fondo muy sutil */
+    z-index: -1;
+    pointer-events: none;
+    animation: animateBackground 30s linear infinite; /* Animación de movimiento */
+}
+
+@keyframes animateBackground {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(100px, 100px); /* Un ligero movimiento diagonal */
+    }
+}
+
+/* --- Responsive Design Media Queries --- */
+
+/* Para pantallas de hasta 768px (tablets y móviles grandes) */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 0; /* Menos padding en el header */
+    }
+
+    nav {
+        flex-direction: column; /* La navegación se apila en columnas */
+        align-items: center; /* Centra los elementos apilados */
+        gap: 15px; /* Espacio entre enlaces apilados */
+    }
+
+    nav a {
+        font-size: 1rem; /* Fuentes un poco más pequeñas */
+        padding: 8px 15px; /* Ajuste de padding */
+    }
+
+    section {
+        padding: 90px 15px 60px; /* Ajuste del padding de las secciones */
+        min-height: unset; /* Permite que la altura de la sección se ajuste al contenido */
+        align-items: center; /* Centra el contenido en móviles */
+    }
+
+    .intro h1 {
+        font-size: 2.2rem; /* Tamaño de título principal para móviles más pequeños */
+        line-height: 1.2; /* Ajuste de interlineado */
+        margin-bottom: 25px;
+    }
+
+    .intro p {
+        font-size: 0.95rem; /* Tamaño de párrafo introductorio */
+        padding: 0 10px; /* Pequeño padding para evitar que el texto toque los bordes */
+    }
+
+    h2 {
+        font-size: 1.6rem; /* Tamaño de títulos de sección */
+        margin-bottom: 20px;
+    }
+
+    .section-content {
+        padding: 25px; /* Menos padding en los cuadros de contenido */
+        border-radius: 8px; /* Bordes un poco menos redondeados */
+    }
+
+    .section-content p {
+        font-size: 1rem; /* Tamaño de párrafo de contenido */
+        line-height: 1.8; /* Ajuste de interlineado */
+    }
+
+    .decorative-line {
+        width: 150px; /* Línea decorativa más corta */
+        margin: 20px auto;
+    }
+}
+
+/* Para pantallas de hasta 480px (smartphones pequeños) */
+@media (max-width: 480px) {
+    header {
+        padding: 10px 0;
+    }
+    nav {
+        gap: 8px; /* Menos espacio entre enlaces */
+    }
+    nav a {
+        font-size: 0.8rem; /* Fuente más pequeña para la navegación */
+        padding: 6px 10px;
+    }
+    .intro h1 {
+        font-size: 1.8rem; /* Título principal más pequeño */
+    }
+    .intro p {
+        font-size: 0.85rem; /* Párrafo introductorio más pequeño */
+    }
+    h2 {
+        font-size: 1.3rem; /* Títulos de sección más pequeños */
+        margin-bottom: 15px;
+    }
+    .section-content {
+        padding: 18px; /* Padding reducido */
+    }
+    .section-content p {
+        font-size: 0.9rem; /* Párrafos de contenido más pequeños */
+        line-height: 1.7;
+    }
+    footer {
+        padding: 20px;
+        font-size: 0.8rem;
+    }
+}
